@@ -1,9 +1,9 @@
-<mat-card class="example-card">
+<mat-card class="example-card" fxLayout="column" fxFlexFill>
   <mat-card-header>
     <mat-card-title>{{card.name}}</mat-card-title>
   </mat-card-header>
   <img mat-card-image [src]="card.pic" alt="Photo of a Shiba Inu">
-  <mat-card-content>
+  <mat-card-content fxFlex>
     <p>
       {{card.description}}
     </p>
