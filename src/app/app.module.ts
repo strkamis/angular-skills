@@ -17,6 +17,7 @@ import { FakeApiService } from "./fake-api.service";
 import { HelloComponent } from "./hello.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
+    MatDividerModule,
     FlexLayoutModule,
     InMemoryWebApiModule.forRoot(FakeApiService, { delay: 5000 }),
   ],
