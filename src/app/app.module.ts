@@ -6,6 +6,7 @@ import {
   MatCardModule,
   MatChipsModule,
 } from "@angular/material";
+import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
@@ -15,6 +16,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { FakeApiService } from "./fake-api.service";
 import { HelloComponent } from "./hello.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 @NgModule({
   imports: [
@@ -25,6 +28,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatChipsModule,
     MatCardModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
     FlexLayoutModule,
     InMemoryWebApiModule.forRoot(FakeApiService, { delay: 5000 }),
   ],
@@ -32,7 +37,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     AppComponent,
     HelloComponent,
     DashboardComponent,
-    CardComponent,
+    CardComponent
   ],
   bootstrap: [AppComponent],
 })

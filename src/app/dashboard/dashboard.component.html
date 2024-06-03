@@ -1,5 +1,8 @@
+
 <!-- TODO: melhorar o layout dos cards para exibir ao menos 2 por linha em telas > md, e pequenas (sm) 1 -->
-<div fxLayout="row wrap-2" 
+
+
+<div fxLayout="row wrap"  *ngIf="!isLoading; else loading"
         fxLayout.lg="row wrap-3" 
         fxLayout.md="row wrap-2" 
         fxLayout.xs="column"
@@ -14,5 +17,11 @@
         fxLayout="row" 
         fxLayoutAlign="center center">
     </app-card>
-    
 </div>
+
+  
+<ng-template #loading>
+    <div fxLayout="row" fxLayoutAlign="center center" style="width: 100%; height: 100vh;">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+</ng-template>

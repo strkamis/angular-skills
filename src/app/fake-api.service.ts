@@ -1,12 +1,16 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { InMemoryDbService, RequestInfo  } from 'angular-in-memory-web-api';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FakeApiService implements InMemoryDbService {
 
-  constructor() { }
+  private apiUrl = '/api/skills';
+
+  constructor( ) { }
 
   createDb() {
 
@@ -20,5 +24,31 @@ export class FakeApiService implements InMemoryDbService {
     ];
 
     return { skills };
+  }
+
+  //se tirar esse bloco de codigo, quebra!
+  post(requestInfo: RequestInfo) {
+    if (requestInfo.collectionName === 'skills') {
+      return this.incrementLikes(requestInfo);
+    }
+    return undefined; 
+  }
+
+  private incrementLikes(requestInfo: RequestInfo) {
+    const id = +requestInfo.id;
+    const collection = requestInfo.collection;
+    const skill = collection.find((item: any) => item.id === id);
+    if (skill) {
+      skill.likes++;
+      //simula uma resposta HTTP com tratativas de erro
+      return requestInfo.utils.createResponse$(() => ({
+        body: skill,
+        status: 200
+      }));
+    } else {
+      return requestInfo.utils.createResponse$(() => ({
+        status: 404
+      }));
+    }
   }
 }
